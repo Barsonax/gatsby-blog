@@ -7,4 +7,4 @@ resources:
   name: featuredImage
   src: /images/nullreferenceexception.jpg
 ---
-![testalt](/images/codecov_sunburst.jpg "testtitle")
+![testalt](content/images/codecov_sunburst.jpg "testtitle")
