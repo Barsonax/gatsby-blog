@@ -5,6 +5,6 @@ categories:
   - test
 featuredImage:
   description: Bla
-  src: /images/park.jpg
+  src: /../images/codecov_sunburst.jpg
 ---
-![testalt](/images/vietnamlanternstand.jpg "testtitle")
+![testalt](/../images/usbotgcardreader.jpg "testtitle")
