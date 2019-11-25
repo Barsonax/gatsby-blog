@@ -7,4 +7,4 @@ featuredImage:
   description: Bla
   src: /../images/codecov_sunburst.jpg
 ---
-![testalt](/../images/usbotgcardreader.jpg "testtitle")
+![testalt](content/images/usbotgcardreader.jpg "testtitle")
