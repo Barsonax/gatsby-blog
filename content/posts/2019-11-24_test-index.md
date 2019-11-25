@@ -5,6 +5,6 @@ categories:
   - test
 featuredImage:
   description: Bla
-  src: ../images/codecov_sunburst.jpg
+  src: /images/nullreferenceexception.jpg
 ---
 ![testalt](/images/park.jpg "testtitle")
