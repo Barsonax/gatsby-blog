@@ -7,4 +7,4 @@ featuredImage:
   description: Bla
   src: /images/park.jpg
 ---
-![testalt](content/images/codecov_sunburst.jpg "testtitle")
+![testalt](/images/vietnamlanternstand.jpg "testtitle")
