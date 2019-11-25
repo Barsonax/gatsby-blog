@@ -5,6 +5,6 @@ categories:
   - test
 featuredImage:
   description: Bla
-  src: /../images/codecov_sunburst.jpg
+  src: ../images/codecov_sunburst.jpg
 ---
 ![testalt](content/images/usbotgcardreader.jpg "testtitle")
