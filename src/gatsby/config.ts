@@ -117,7 +117,13 @@ export const Config = {
     },
     'gatsby-plugin-typescript',
     'gatsby-plugin-react-helmet',
-    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options:
+      {
+        output: "/"
+      }
+    },
     {
       resolve: `gatsby-plugin-feed`,
       options: {
