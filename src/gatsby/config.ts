@@ -121,7 +121,21 @@ export const Config = {
       resolve: `gatsby-plugin-sitemap`,
       options:
       {
-        output: "/"
+        output: "/",
+        query: `
+        {
+          site {
+            siteMetadata {
+              siteUrl
+            }
+          }
+          allSitePage {
+            nodes {
+              path
+            }
+          }
+        }
+      `,
       }
     },
     {
