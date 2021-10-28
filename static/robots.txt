@@ -1,2 +1,3 @@
 User-agent: *
 Disallow:
+Sitemap: https://photogrammer.net/sitemap-0.xml
