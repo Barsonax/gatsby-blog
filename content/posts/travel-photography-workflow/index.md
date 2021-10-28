@@ -22,7 +22,7 @@ To solve this problem we first have to figure out a way to get the files on your
 
 ![Usb otg cardreader](./usbotgcardreader.jpg)
 
-I bought the above cardreader with usb c adapter in Vietnam but its probably easier if you buy it before you go on a trip. Make sure the card reader supports OTG so that it will work with mobile phones. Recently I have also noticed that usb 3.0 devices such as the [Transcend RDF5 USB 3.0 Card reader](https://www.transcend-info.com/Products/No-396) will work as well.
+I bought the above cardreader with usb c adapter in Vietnam but its probably easier if you buy it before you go on a trip. Make sure the card reader supports OTG so that it will work with mobile phones. Recently I have also noticed that usb 3.0 devices such as the [Transcend RDF5 USB 3.0 Card reader](https://amzn.to/3biqVSJ) will work as well.
 
 Some camera's support transferring photo's to your phone using WIFI. However with both my a6000 and A7III camera's it only transfered a small preview JPEG and not the full RAW file so I still ended up using a card reader to unlock the full potential of my camera's.
 
