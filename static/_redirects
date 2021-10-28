@@ -1,2 +1,3 @@
 /posts/* /:splat
-https://the-photographing-programmer.com/* https://photogrammer.net/:splat 301
+
+https://the-photographing-programmer.com/* https://photogrammer.net/:splat 301!
