@@ -32,9 +32,9 @@ const Menu: React.FC = () => (
       }, [menuOpen])
 
       return <nav className={classNames(styles.navBar, sidePadding)}>
-        <h1 className={styles.navHeader}>
+        <h2 className={styles.navHeader}>
           <Link to="/" className={styles.navText}>{data.site?.siteMetadata.title}</Link>
-        </h1>
+        </h2>
         <div className={menuOpen ? classNames(styles.hamburgerMenu, styles.hamburgerMenuOpen) : styles.hamburgerMenu}>
           <button onClick={() => setMenuOpen(!menuOpen)} aria-haspopup="true" aria-expanded={menuOpen} aria-controls="menu" aria-label="Menu">
             <span>
