@@ -33,7 +33,6 @@ const Article: React.FC<ArticleProps> = (props) =>
       </header>
       {props.featuredImage && <GatsbyImage image={props.featuredImage.data} alt={props.featuredImage.description} />}
       <div dangerouslySetInnerHTML={{ __html: props.excerpt }} />
-      <Disqus config={props.disqusConfig} />
     </article>
   </div>
 
