@@ -50,12 +50,6 @@ const Menu: React.FC = () => (
               <Link onClick={() => setMenuOpen(false)} to="/about-me/" className={styles.hamburgerMenuOverlayLink}>About Me</Link>
             </li>
             <li>
-              <a onClick={() => setMenuOpen(false)} href="/categories/photography" className={styles.hamburgerMenuOverlayLink}>Photography</a>
-            </li>
-            <li>
-              <a onClick={() => setMenuOpen(false)} href="/categories/programming" className={styles.hamburgerMenuOverlayLink}>Programming</a>
-            </li>
-            <li>
               <a onClick={() => setMenuOpen(false)} href="/index.xml" className={styles.hamburgerMenuOverlayLink}>rss</a>
             </li>
           </ul>
