@@ -1,8 +1,6 @@
 const environment = {
-  URL: process.env.NETLIFY ?
-    process.env.CONTEXT == 'production' ?
-      process.env.URL :
-      process.env.DEPLOY_PRIME_URL :
+  URL: process.env.CF_PAGES == "1" ?
+      process.env.CF_PAGES_URL :
     'http://localhost:8000'
 }
 export default environment
