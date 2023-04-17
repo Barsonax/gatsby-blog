@@ -65,7 +65,7 @@ public static class ServiceCollectionExtensions
 With this extension method we can change our previous registration to this:
 
 ```cs
-services.AddFactory(Factory.Create);
+services.AddFactory(Factory.Create); // Note: needs C# 10 or later.
 ```
 
 Which is much shorter and also we never have to change this if we change the parameters of the Create method!
