@@ -1,5 +1,5 @@
 ---
-title: Factory delegates and DI
+title: Simplified DI with Funcs
 date: 2023-04-17T00:00:00.000Z
 categories:
   - Programming
