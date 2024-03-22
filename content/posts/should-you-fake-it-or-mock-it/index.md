@@ -31,8 +31,9 @@ public interface IITemStore
 The real dependency is volatile as it uses a external service that has to be called over the network so we won't be using the real dependency in our unit tests.
 
 ## Mocks/Stubs
-One of the simplest ways to remove a volatile dependency is to provide a stable dependency where we just hardcode the behavior that we need in the test. You might also be interested in inspecting if certain calls were done. You might write your own or use a library like Moq to help you do this. Our GetById test will look like this:
+One of the simplest ways to remove a volatile dependency is to provide a stable dependency where we just hardcode the behavior that we need in the test. You might also be interested in inspecting if certain calls were done. You might write your own or use a library like Moq to help you do this.
 
+Following this approach our GetById test will look like this:
 ```cs
 // Arrange
 var itemStoreMock = new Mock<IITemStore>();
@@ -136,4 +137,5 @@ Downsides:
 
 ## Verdict
 So which approach should you use? I think that depends on your context. In the example above we have a simple interface that makes some clear promises: you can create items and get them by id. In this case I think a fake is the clear winner. The tests are easier to write and more readable and furthermore its generic so you could have many tests that use this fake.
+
 However maybe you have a interface with very complex behavior which is hard to write a fake for and its easier to just mock it. In that situation you might ask yourself do you really need all that complex behavior in your app? Maybe a simplified interface that is easily fakeable is sufficient for your use cases so you might still want to use a fake in that situation. Maybe you are only ever going to have a few tests that uses that dependency and investing in a fake is not worth the time so a mock might still be the better choice. It really depends.
