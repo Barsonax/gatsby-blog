@@ -73,7 +73,7 @@ But there are some downsides as well:
 - Hard to test more complex interaction between dependencies.
 
 ## Fakes
-A fake is smarter and will actually mimic the behavior of the real dependency but without being volatile. They will have limitations that make them unsuitable for production though such as less scalable.
+A fake is smarter and will actually mimic the behavior of the real dependency but without being volatile. They might have limitations that make them unsuitable for production though such as being less scalable.
 
 For instance you might have a interface that lets you store and retrieve items. The real dependency uses a external service but your fake is simply storing and retrieving these items in memory. Even though storing items in memory will not work in production the basic promise of the interface is still uphold which makes the fake suitable for usage in unit tests. You could use a library like Moq for this with more complicated setups but I find it easier and clearer to just do it without any library and simply write a new class:
 
@@ -136,6 +136,6 @@ Downsides:
 - Less control over a specific test case.
 
 ## Verdict
-So which approach should you use? I think that depends on your context. In the example above we have a simple interface that makes some clear promises: you can create items and get them by id. In this case I think a fake is the clear winner. The tests are easier to write and more readable and furthermore its generic so you could have many tests that use this fake.
+So which approach should you use? I think that depends on your context. In the example above we have a simple interface that makes some clear promises: you can create items and get them by id. In this case I think a fake is the clear winner. The tests are easier to write and more readable and furthermore its generic so you could have many tests that use this fake. Note that its possible to achieve the same behavior with moq but I find it easier to not use a mocking library at all when writing a fake.
 
-However maybe you have a interface with very complex behavior which is hard to write a fake for and its easier to just mock it. In that situation you might ask yourself do you really need all that complex behavior in your app? Maybe a simplified interface that is easily fakeable is sufficient for your use cases so you might still want to use a fake in that situation. Maybe you are only ever going to have a few tests that uses that dependency and investing in a fake is not worth the time so a mock might still be the better choice. It really depends.
+However maybe you have an interface with very complex behavior which is hard to write a fake for and its easier to just mock it. In that situation you might ask yourself do you really need all that complex behavior in your app? Maybe a simplified interface that is easily fakeable is sufficient for your use cases so you might still want to use a fake in that situation. Maybe you are only ever going to have a few tests that uses that dependency and investing in a fake is not worth the time so a mock might still be the better choice. It really depends.
