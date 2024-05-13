@@ -20,20 +20,37 @@ Not really, its more nuanced than that. I think this is also where a lot of ppl 
 
 Even when purely focussing on unit tests you can think of many different scopes. You can test at method, class, module level or anything in between. All of these might be valid choices depending on the context. Deciding the scope of a test has more to do with testing behaviors vs testing implementation details. To get to writing good tests you want to aim your tests at behaviors and avoid implementation details. Tests that target behaviors will survive many refactors giving you the freedom to write better code.
 
-### Its about coupling and cohesion
-It's important to realize that when you write a test you introduce coupling to the piece of code you are testing. Every reference to the code you are writing a test for makes it harder to change the code you are testing, the exact thing we want to avoid by writing tests. To make this even more clear let's take an example of a code base where you would write unit tests for every single method in your code. Now think about how much freedom do you have left for refactoring without having to modify a test? This coupling is something you have to take into account when deciding if it's worth it to write a test for a certain piece of code. Ignoring this will lead to a code base that is very hard to change and productivity will plummet.
+### Why avoid testing implementation details
+It's important to realize that when you write a test you introduce coupling to the piece of code you are testing. Every reference to the code you are writing a test for makes it harder to change the code you are testing, the exact thing we want to avoid by writing tests.
+To make this even more clear let's take an example of a code base where you would write unit tests for every single method in your code. Now think about how much freedom do you have left for refactoring without having to modify a test? This coupling is something you have to take into account when deciding if it's worth it to write a test for a certain piece of code. Ignoring this will lead to a code base that is very hard to change and productivity will plummet.
 
-Tests that test too much different things are also hard to maintain. They can potentially break due to many different changes in the system under test which makes it harder to trace back the root cause. This is cohesion and is also something you have to take into account.
+You can employ a combination of techniques to avoid testing implementation details. Choosing the right scope for your unit test is by far the most important determining factor.
 
-Choosing the scope of your tests is about balancing coupling and cohesion. In the next part I will give some more concrete examples and what I would do in that situation.
+In the next part I will give some ways to avoid testing implementation details and write tests that focus on the behaviors of your system.
 
-## Target stable interfaces with tests
-One thing you can do to reduce the coupling of your tests is to write tests that target a stable interface that does not change often. A interface is stable when its expensive to introduce changes to it, maybe because the consumers of your system are using it. Coincidentally these might often align with the use cases of that code which helps cohesion as well. Some examples are:
+### How to avoid testing implementation details
+Testing implementation details usually happens when writing too fine-grained tests so how to avoid this? Yes by increasing the scope of the tests. You have to identify the behavioral units of your system and write tests for those units. A good place to start are the edges of your system that are consumed by others. To give some examples:
+1. The GetService call on a dependency injection container.
+2. An endpoint in your REST API.
+3. Calculating a path from A to B using a pathfinding algorithm like A* for instance.
 
-### Your REST api
-REST api's are everywhere and if you are building one this might be the first candidate you should look for when writing a test. While more complex to setup these tests have very little coupling to the code under test, give you high confidence your system is working properly and you can do big refactors to the system without having to change even a single test.
+Now if your system is simple just writing tests that target the edge of the system might be enough. At some point though your system might start to become more complex and certain smaller units of behavior in your code might appear that could benefit from their own set of tests. Some examples:
+1. Custom collections, for instance I implemented my own custom read optimized dictionary when I made Singularity just so I could top the benchmark.
+2. A custom cross-cutting concern in your REST API
+3. General utility methods
+4. Complex domain logic
 
-.NET in particular has good support for such test with [WebApplicationFactory](https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests) and I also made a [TestExamplesDotnet repository](https://github.com/Barsonax/TestExamplesDotnet) which I also use myself to quickly setup such tests. While the setup will more more complex than unit tests the tests themselves can be very easy to write and readable. Take for instance this test taken from my [CleanAspCoreWebApiTemplate repository](https://github.com/Barsonax/CleanAspCoreWebApiTemplate):
+This might already start to feel more like a gray area so lets also give some examples where I wouldn't write tests:
+1. A FluentValidator that was made specifically for an endpoint.
+2. A Mapper that was made specifically for an endpoint.
+
+So what's the difference here? One thing to realize is that in the first examples the examples were truly generic, they basically define their own behavioral promise and could even be used in a different context as well. While the validator and mapper are very specific to an endpoint, they are basically implementation details of that endpoint. If we swap out FluentValidation for DataAnnotations but keep the behavior of the endpoint the same we wouldn't want to have to modify our tests. Why should our test care if we are using FluentValidation? Now you might not swap out validation libraries every day but refactors are something that should happen regularly and not having to update the tests every time you clean something up will keep you moving fast.
+
+### Test only one unit in a test
+I do want to press that even if the behavioral unit is larger you should still try to test only one behavioral unit. If you need to test another case just make another test, they are cheap. If you find that you write the same test many times over and over again then it might be time to parameterize your test. I also find that following the Arrange, Act and Assert pattern helps here while also increasing readability.
+
+### Time for an example with code
+Lets say were developing a REST API with ASP.NET. We are lucky ASP.NET has excellent support for tests that target an REST API with the help of [WebApplicationFactory](https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests) and [TestContainers](https://testcontainers.com/). With these it is relatively easy to setup an integration test. A simple test that tests a GET endpoint might look as simple as this:
 ```cs
 [Test]
 public async Task GetJobById_ReturnsExpectedJob()
@@ -54,16 +71,8 @@ public async Task GetJobById_ReturnsExpectedJob()
 }
 ```
 
-For systems with not too much complexity this might even all you need for your automated testing needs as you can indirectly test all your functionality with these tests. Even if you don't want to or can't use integration tests then atleast try to write unit tests that target the edges of your system.
+Even though a lot of implementation details are happening under the hood like SQL, serialization and HTTP it is still only one behavioral unit: Get a job by its id. The chance this test will break when refactoring the API itself is pretty low as this is the behavioral promise made by the GetJobById endpoint.
 
-### Code with many references to it
-Your code base might have some very generic helpers utilities that are used in many different contexts. Think of string manipulation extensions for instance. These can be a good target for unit tests. Complex domain logic can also benefit from unit tests. Be careful though and weight the pros and cons of writing separate unit tests as it does increase coupling, testing indirectly can be totally fine.
+If you are interested in how exactly I abstract the whole integration test setup take a look at [TestExamplesDotnet repository](https://github.com/Barsonax/TestExamplesDotnet). The test itself I took from another repository of mine: [CleanAspCoreWebApiTemplate repository](https://github.com/Barsonax/CleanAspCoreWebApiTemplate).
 
-### Align tests with behavior
-Some of your code you might not be used directly but through another library. This is the case for instance with a JsonConverter. In this case I would not test the JsonConverter directly but by calling the JsonSerializer api's. For the test we are only interested in the json serialization and deserialization behavior, the JsonConverter is just a implementation detail. This avoids a bit of coupling with the JsonConverter but more importantly aligns with how you use it in the rest of your app so if the tests are passing you know your JsonConverter is working correctly in your app.
-
-### Test one thing in a test
-To avoid testing many different things in a test try to only test a specific use case. If you need to test another case just make another test, they are cheap. If you find that you write the same test many times over and over again then it might be time to parameterize your test. I also find that following the Arrange, Act and Assert pattern helps here while also increasing readability.
-
-## It takes time
-Knowing which tests to write and which you don't have to write takes experience but I hope I atleast made it a bit clearer. Even if you don't fully understand from this article what to do yet I do hope it will make you think about the coupling and cohesion in your tests.
+Does this mean you should always go for a full integration test? I think that depends. As I said before with ASP.NET its very easy to do due to the support in the framework and available libraries so for me it just makes sense to go for that route in that case. However, I also worked with other frameworks like Azure Functions which don't have an equivalent of [WebApplicationFactory](https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests) and in that case I wrote unit tests that just called the method instead. I see tests as a way to increase my productivity and the quality I deliver. They are a means to an end and sometimes you just have to be pragmatic.
