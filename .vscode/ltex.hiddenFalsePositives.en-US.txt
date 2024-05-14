@@ -1,0 +1,1 @@
+{"rule":"PREPOSITION_VERB","sentence":"^\\QI also find that following the Arrange, Act and Assert pattern helps here while also increasing readability.\\E$"}
