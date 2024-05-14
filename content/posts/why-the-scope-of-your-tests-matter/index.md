@@ -73,7 +73,7 @@ public async Task GetJobById_ReturnsExpectedJob()
 
 Even though a lot of implementation details are happening under the hood like SQL, serialization and HTTP it is still only one behavioral unit: Get a job by its id. The chance this test will break when refactoring the API itself is pretty low as this is the behavioral promise made by the GetJobById endpoint.
 
-If you are interested in how exactly I abstracted the test setup take a look at [TestExamplesDotnet repository](https://github.com/Barsonax/TestExamplesDotnet). The test itself I took from another repository of mine: [CleanAspCoreWebApiTemplate repository](https://github.com/Barsonax/CleanAspCoreWebApiTemplate).
+If you are interested in how exactly I abstracted the integration test setup and made sure they are blazing fast take a look at [TestExamplesDotnet repository](https://github.com/Barsonax/TestExamplesDotnet). The test itself I took from another repository of mine: [CleanAspCoreWebApiTemplate repository](https://github.com/Barsonax/CleanAspCoreWebApiTemplate).
 
 ## Be pragmatic
 Does this mean you should always start with an integration test? I think that depends. As I said before with ASP.NET its very easy to do due to the support in the framework and available libraries so for me it just makes sense to go for that route in that case.
