@@ -44,10 +44,7 @@ This might already start to feel more like a gray area so lets also give some ex
 1. A FluentValidator that was made specifically for an endpoint.
 2. A Mapper that was made specifically for an endpoint.
 
-So what's the difference here? One thing to realize is that in the first examples the examples were truly generic, they basically define their own behavioral promise and could even be used in a different context as well. While the validator and mapper are very specific to an endpoint, they are basically implementation details of that endpoint. If we swap out FluentValidation for DataAnnotations but keep the behavior of the endpoint the same we wouldn't want to have to modify our tests. Why should our test care if we are using FluentValidation? Now you might not swap out validation libraries every day but refactors are something that should happen regularly and not having to update the tests every time you clean something up will help you keep moving fast.
-
-### Test only one unit in a test
-I do want to press that even if the behavioral unit is larger you should still try to test only one behavioral unit. If you need to test another case just make another test, they are cheap. If you find that you write the same test many times over and over again then it might be time to parameterize your test. I also find that following the Arrange, Act and Assert pattern helps here while also increasing readability.
+So what's the difference here? One thing to realize is that in the first examples the examples were truly generic, they basically define their own behavioral promise and could even be used in a different context as well. While the validator and mapper are very specific to an endpoint, they are basically implementation details of that endpoint. If we swap out FluentValidation for DataAnnotations but keep the behavior of the endpoint the same we wouldn't want to have to modify our tests. Why should our validation test care if the validation was implemented using FluentValidation? Now you might not swap out validation libraries every day but refactors are something that should happen regularly and not having to update the tests every time you clean something up will help you keep moving fast.
 
 ### Time for an example with code
 Lets say were developing a REST API with ASP.NET. We are lucky ASP.NET has excellent support for tests that target an REST API with the help of [WebApplicationFactory](https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests) and [TestContainers](https://testcontainers.com/). With these it is relatively easy to setup an integration test. A simple test that tests a GET endpoint might look as simple as this:
@@ -74,6 +71,9 @@ public async Task GetJobById_ReturnsExpectedJob()
 Even though a lot of implementation details are happening under the hood like SQL, serialization and HTTP it is still only one behavioral unit: Get a job by its id. The chance this test will break when refactoring the API itself is pretty low as this is the behavioral promise made by the GetJobById endpoint.
 
 If you are interested in how exactly I abstracted the integration test setup and made sure they are blazing fast take a look at [TestExamplesDotnet repository](https://github.com/Barsonax/TestExamplesDotnet). The test itself I took from another repository of mine: [CleanAspCoreWebApiTemplate repository](https://github.com/Barsonax/CleanAspCoreWebApiTemplate).
+
+### Test only one unit in a test
+I do want to press that even if the unit is larger you should still try to test only one 'behavioral' unit. If you need to test another case just make another test, they are cheap. If you find that you write the same test many times over and over again then it might be time to parameterize your test. I also find that following the Arrange, Act and Assert pattern helps here while also increasing readability.
 
 ## Be pragmatic
 Does this mean you should always start with an integration test? I think that depends. As I said before with ASP.NET its very easy to do due to the support in the framework and available libraries so for me it just makes sense to go for that route in that case.
