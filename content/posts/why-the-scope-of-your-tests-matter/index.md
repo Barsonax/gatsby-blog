@@ -66,7 +66,7 @@ public async Task GetJobById_ReturnsExpectedJob()
 }
 ```
 
-Even though a lot of implementation details are happening under the hood like SQL, serialization and HTTP it is still only one behavioral unit: Get a job by its id. The chance this test will break when refactoring the API itself is pretty low as this is the behavioral promise made by the GetJobById endpoint.
+Even though a lot of implementation details are happening under the hood like SQL, serialization and HTTP it is still only one behavioral unit: Get a job by its id. The chance this test will break when refactoring the API itself is pretty low as this is the behavioral promise made by the GetJobById endpoint. This promise is likely to be upheld even if the implementation of the endpoint completely changes. As a bonus this test clearly showcases one of the use cases of the system and thus is a piece of documentation as well.
 
 If you are interested in how exactly I abstracted the integration test setup and made sure they are blazing fast take a look at [TestExamplesDotnet repository](https://github.com/Barsonax/TestExamplesDotnet). The test itself I took from another repository of mine: [CleanAspCoreWebApiTemplate repository](https://github.com/Barsonax/CleanAspCoreWebApiTemplate).
 
