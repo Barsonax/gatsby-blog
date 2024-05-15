@@ -29,12 +29,12 @@ You can employ a combination of techniques to avoid testing implementation detai
 In the next part I will give some ways to avoid testing implementation details and write tests that focus on the behaviors of your system.
 
 ### How to avoid testing implementation details
-Testing implementation details usually happens when writing too fine-grained tests so how to avoid this? Yes by increasing the scope of the tests. You have to identify the behavioral units of your system and write tests for those units. A good place to start are the edges of your system that are consumed by others. To give some examples:
+Testing implementation details usually happens when writing too fine-grained tests so how to avoid this? Yes by increasing the scope of the tests. You have to identify the behavioral units of your system and write tests for those units. How to identify the behavioral units of your system? A good place to start are the edges of your system that are consumed by your users. These tend to have a clear behavioral promise that's directly related to the use cases of your system. To give some examples:
 1. The GetService call on a dependency injection container.
 2. An endpoint in your REST API.
 3. Calculating a path from A to B using a pathfinding algorithm like A* for instance.
 
-Now if your system is simple just writing tests that target the edge of the system might be enough. At some point though your system might start to become more complex and certain smaller units of behavior in your code might appear that could benefit from their own set of tests. Some examples:
+Now if your system is simple just writing tests that target the edge of the system might be enough. At some point though your system might start to become more complex and certain smaller units of behavior in your code might appear that could benefit from their own set of tests. The code that falls into this category still has a clear behavioral promise but is more generic and not related to a single use case of your system. Developers themselves tend to be the ones that are consuming this code as they are the building blocks of your complex system. Some examples:
 1. Custom collections, for instance I implemented my own custom read optimized dictionary when I made Singularity just so I could top the benchmark.
 2. A custom cross-cutting concern in your REST API
 3. General utility methods
@@ -44,7 +44,7 @@ This might already start to feel more like a gray area so lets also give some ex
 1. A FluentValidator that was made specifically for an endpoint.
 2. A Mapper that was made specifically for an endpoint.
 
-So what's the difference here? One thing to realize is that in the first examples the examples were truly generic, they basically define their own behavioral promise and could even be used in a different context as well. While the validator and mapper are very specific to an endpoint, they are basically implementation details of that endpoint. If we swap out FluentValidation for DataAnnotations but keep the behavior of the endpoint the same we wouldn't want to have to modify our tests. Why should our validation test care if the validation was implemented using FluentValidation? Now you might not swap out validation libraries every day but refactors are something that should happen regularly and not having to update the tests every time you clean something up will help you keep moving fast.
+So what's the difference here? One thing to realize is that in the first examples the examples were truly generic, they define their own behavioral promise and could even be used in a different context as well. While the validator and mapper are very specific to an endpoint, they are implementation details of that endpoint. If we swap out FluentValidation for DataAnnotations but keep the behavior of the endpoint the same we wouldn't want to have to modify our tests. Why should our validation test care if the validation was implemented using FluentValidation? Now you might not swap out validation libraries every day but refactors are something that should happen regularly and not having to update the tests every time you clean something up will help you keep moving fast.
 
 ### Time for an example with code
 Lets say were developing a REST API with ASP.NET. We are lucky ASP.NET has excellent support for tests that target an REST API with the help of [WebApplicationFactory](https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests) and [TestContainers](https://testcontainers.com/). With these it is relatively easy to setup an integration test. A simple test that tests a GET endpoint might look as simple as this:
@@ -73,7 +73,7 @@ Even though a lot of implementation details are happening under the hood like SQ
 If you are interested in how exactly I abstracted the integration test setup and made sure they are blazing fast take a look at [TestExamplesDotnet repository](https://github.com/Barsonax/TestExamplesDotnet). The test itself I took from another repository of mine: [CleanAspCoreWebApiTemplate repository](https://github.com/Barsonax/CleanAspCoreWebApiTemplate).
 
 ### Test only one unit in a test
-I do want to press that even if the unit is larger you should still try to test only one 'behavioral' unit. If you need to test another case just make another test, they are cheap. If you find that you write the same test many times over and over again then it might be time to parameterize your test. I also find that following the Arrange, Act and Assert pattern helps here while also increasing readability.
+I do want to press that even if the unit is larger you should still try to test only one behavioral unit. If you need to test another case just make another test, they are cheap. If you find that you write the same test many times over and over again then it might be time to parameterize your test. I also find that following the Arrange, Act and Assert pattern helps here while also increasing readability.
 
 ## Be pragmatic
 Does this mean you should always start with an integration test? I think that depends. As I said before with ASP.NET its very easy to do due to the support in the framework and available libraries so for me it just makes sense to go for that route in that case.
