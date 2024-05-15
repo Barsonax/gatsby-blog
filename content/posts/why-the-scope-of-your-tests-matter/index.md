@@ -24,12 +24,10 @@ Even when purely focussing on unit tests you can think of many different scopes.
 It's important to realize that when you write a test you introduce coupling to the piece of code you are testing. Every reference to the code you are writing a test for makes it harder to change the code you are testing, the exact thing we want to avoid by writing tests.
 To make this even more clear let's take an example of a code base where you would write unit tests for every single method in your code. Now think about how much freedom do you have left for refactoring without having to modify a test? This coupling is something you have to take into account when deciding if it's worth it to write a test for a certain piece of code. Ignoring this will lead to a code base that is very hard to change and productivity will plummet.
 
-You can employ a combination of techniques to avoid testing implementation details. Choosing the right scope for your unit test is by far the most important determining factor.
-
-In the next part I will give some ways to avoid testing implementation details and write tests that focus on the behaviors of your system.
+You can employ a combination of techniques to avoid testing implementation details. Choosing the right scope for your unit test is by far the most important determining factor. In the next part I will give a way to avoid testing implementation details by writing tests that focus on the behaviors of your system.
 
 ### How to avoid testing implementation details
-Testing implementation details usually happens when writing too fine-grained tests so how to avoid this? Yes by increasing the scope of the tests. You have to identify the behavioral units of your system and write tests for those units. How to identify the behavioral units of your system? A good place to start are the edges of your system that are consumed by your users. These tend to have a clear behavioral promise that's directly related to the use cases of your system. To give some examples:
+Testing implementation details usually happens when writing too fine-grained tests so how to avoid this? Yes by increasing the scope of the tests. You have to identify the behavioral units of your system and write tests for those units and not the implementation details. How to identify the behavioral units of your system? A good place to start are the edges of your system that are consumed by your users. These tend to have a clear behavioral promise that's directly related to the use cases of your system. To give some examples:
 1. The GetService call on a dependency injection container.
 2. An endpoint in your REST API.
 3. Calculating a path from A to B using a pathfinding algorithm like A* for instance.
