@@ -53,6 +53,7 @@
     "babel-plugin-styled-components": "^2.1.4",
     "babel-preset-gatsby": "^3.13.2",
     "eslint": "^7.32.0",
+    "gatsby-cli": "^5.13.3",
     "graphql": "^16.8.1",
     "ts-node": "^10.9.2",
     "typed-css-modules": "^0.9.1",
