@@ -41,7 +41,8 @@ const IndexLayout: React.FC = ({ children }) => {
       <meta name="keywords" content={data.site?.siteMetadata.keywords} />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={data.site?.siteMetadata.title} />
-      <meta property="og:image" content={data.site?.siteMetadata.siteUrl + getSrc(data.file)} />
+      <meta property="og:description" content={data.site?.siteMetadata.description} />
+      <meta property="og:image" content={data.site?.siteMetadata.siteUrl! + getSrc(data.file)} />
       <meta property="og:image:width" content="400" />
       <meta property="og:image:height" content="400" />
     </Helmet>

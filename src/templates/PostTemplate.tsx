@@ -8,12 +8,13 @@ import Article from '../components/Article'
 import BottomNav from '../components/BottomNav'
 import BlogCard from '../components/BlogCard'
 import { toImageWithMeta } from '../components/ImageWithMeta'
+import { Helmet } from 'react-helmet'
 
 interface PageTemplateQueryInterface {
   data: PostTemplateQuery
 }
 
-const PostTemplate: React.SFC<PageTemplateQueryInterface> = ({ data: { site, sitePage, markdownRemark } }) => {
+const PostTemplate: React.SFC<PageTemplateQueryInterface> = ({ data: { site, sitePage, markdownRemark } }: PageTemplateQueryInterface) => {
   if (!sitePage || !site || !markdownRemark) return (<></>);
 
   const disqusConfig = {
@@ -21,8 +22,16 @@ const PostTemplate: React.SFC<PageTemplateQueryInterface> = ({ data: { site, sit
     identifier: sitePage.path,
     title: markdownRemark.frontmatter.title!,
   }
+  const pageDescription = markdownRemark.frontmatter.description! || markdownRemark.excerpt!;
   return (
     <IndexLayout>
+
+      <Helmet>
+        <meta property="og:title" content={markdownRemark.frontmatter.title!} />
+        <meta property="og:description" content={pageDescription} />
+        <meta name="description" content={pageDescription} />
+      </Helmet>
+
       <Article title={markdownRemark.frontmatter.title!}
         date={markdownRemark.frontmatter.date}
         excerpt={markdownRemark.html!}
@@ -60,6 +69,7 @@ export const query = graphql`query PostTemplate($slug: String!) {
     excerpt
     frontmatter {
       title
+      description
       date(formatString: "D-MM-YYYY")
       featuredImage {
         description
