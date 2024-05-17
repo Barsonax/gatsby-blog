@@ -190,13 +190,6 @@ export const Config = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-disqus`,
-      options: {
-        shortname: `barsonaxblog`
-      }
-    },
-    `gatsby-plugin-netlify`,
     ...(process.env.GATSBY_ALGOLIA_APP_ID ? [{
       resolve: `gatsby-plugin-algolia`,
       options: {

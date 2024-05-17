@@ -95,7 +95,7 @@ export const createPages: GatsbyNode['createPages'] = async (
   }
 }
 
-function getPrevAndNextArticles<T>(articles: T, slug: string) {
+function getPrevAndNextArticles<T extends {}>(articles: T, slug: string) {
   const currentArticleIndex = Object.keys(articles).findIndex(
     (articleSlug) => articleSlug === slug
   )

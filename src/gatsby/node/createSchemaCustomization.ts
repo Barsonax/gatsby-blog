@@ -57,6 +57,13 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
       previous: MarkdownRemark
       next: MarkdownRemark
     }
+
+    type SitePage implements Node {
+      context: SitePageContext
+    }
+    type SitePageContext {
+      category: String
+    }
   `
 
   createTypes(typeDefs)
@@ -74,7 +81,7 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
         }
 
         const regex = "/(/static/images/" + partialPath + ")/"
-        const fileNode = await context.nodeModel.runQuery({
+        const fileNode = await context.nodeModel.findAll({
           firstOnly: true,
           type: 'File',
           query: {
