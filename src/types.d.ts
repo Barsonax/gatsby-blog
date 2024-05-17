@@ -2818,25 +2818,21 @@ export type SiteSortInput = {
 export type Social = {
   readonly __typename?: 'Social';
   readonly github?: Maybe<Scalars['String']['output']>;
-  readonly instagram?: Maybe<Scalars['String']['output']>;
   readonly linkedin?: Maybe<Scalars['String']['output']>;
 };
 
 export type SocialFieldSelector = {
   readonly github?: InputMaybe<FieldSelectorEnum>;
-  readonly instagram?: InputMaybe<FieldSelectorEnum>;
   readonly linkedin?: InputMaybe<FieldSelectorEnum>;
 };
 
 export type SocialFilterInput = {
   readonly github?: InputMaybe<StringQueryOperatorInput>;
-  readonly instagram?: InputMaybe<StringQueryOperatorInput>;
   readonly linkedin?: InputMaybe<StringQueryOperatorInput>;
 };
 
 export type SocialSortInput = {
   readonly github?: InputMaybe<SortOrderEnum>;
-  readonly instagram?: InputMaybe<SortOrderEnum>;
   readonly linkedin?: InputMaybe<SortOrderEnum>;
 };
 
@@ -2906,7 +2902,7 @@ export type BlogListerQuery = { readonly __typename?: 'Query', readonly allMarkd
 export type FooterQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type FooterQuery = { readonly __typename?: 'Query', readonly site?: { readonly __typename?: 'Site', readonly siteMetadata: { readonly __typename?: 'SiteMetadata', readonly social: { readonly __typename?: 'Social', readonly github?: string | null, readonly instagram?: string | null, readonly linkedin?: string | null } } } | null };
+export type FooterQuery = { readonly __typename?: 'Query', readonly site?: { readonly __typename?: 'Site', readonly siteMetadata: { readonly __typename?: 'SiteMetadata', readonly social: { readonly __typename?: 'Social', readonly github?: string | null, readonly linkedin?: string | null } } } | null };
 
 export type MenuQueryVariables = Exact<{ [key: string]: never; }>;
 

@@ -24,7 +24,6 @@ const Footer: React.FC = () => {
       siteMetadata {
         social {
           github
-          instagram
           linkedin
         }
       }
@@ -35,7 +34,6 @@ const Footer: React.FC = () => {
   return (<footer className={styles.footer}>
     <div className={styles.svgIconContainer}>
       <SocialIcon className={styles.github} href={`https://github.com/${data.site?.siteMetadata.social.github}`} label="Github"></SocialIcon>
-      <SocialIcon className={styles.instagram} href={`https://instagram.com/${data.site?.siteMetadata.social.instagram}`} label="Instagram"></SocialIcon>
       <SocialIcon className={styles.linkedin} href={`https://www.linkedin.com/in/${data.site?.siteMetadata.social.linkedin}`} label="Linkedin"></SocialIcon>
     </div>
   </footer>)

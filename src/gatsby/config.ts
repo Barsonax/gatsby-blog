@@ -13,8 +13,7 @@ export const Config = {
     },
     social: {
       github: "Barsonax",
-      instagram: "rickthephotogrammer",
-      linkedin: "rick-van-dam-8369b264"
+      linkedin: "💻-rick-van-dam-8369b264"
     }
   },
   plugins: [

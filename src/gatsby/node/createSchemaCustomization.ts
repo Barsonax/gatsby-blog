@@ -39,7 +39,6 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
 
     type Social{
       github: String
-      instagram: String
       linkedin: String
     }
 
