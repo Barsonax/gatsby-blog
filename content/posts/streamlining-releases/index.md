@@ -49,9 +49,9 @@ Its worth noting here that I rebase my branches before merging them in develop. 
 However gitversion does more than that. If the current commit is not tagged it will append a suffix to the version. The value of this suffix is given by the *tag* value of the *branch* in the *gitversion.yml*. This means I can easily keep deploying to nuget on every PR that goes to develop as it just marks it as a prerelease package. This also makes step 3 obsolete since I will know before I make a release if something package related is broken.
 
 ### Automating gitversion
-Ofcourse manually calling *gitversion* everytime is not what I want. I want the CI server to do this for me. So I made this [build script](https://github.com/Barsonax/Singularity/blob/develop/Build.ps1) that feeds the version information that *gitversion* returns into *dotnet build* and *dotnet pack*.
+Ofcourse manually calling *gitversion* everytime is not what I want. I want the CI server to do this for me. So I made this [build script](https://github.com/Barsonax/Singularity/blob/f257aff12cc28d7646dd46391f02f6fa41f4d674/Build.ps1) that feeds the version information that *gitversion* returns into *dotnet build* and *dotnet pack*.
 
-Do note that on *appveyor* there is by default a older version of *gitversion* installed which seems to handle *gitversion.yml* differently. This is why I install *gitversion* myself using *chocolatey* in this [script](https://github.com/Barsonax/Singularity/blob/develop/InstallChocolateyPackages.ps1) and then use the full path to the *gitversion.exe* in the build script to call it. This ensures that iam using the correct version.
+Do note that on *appveyor* there is by default a older version of *gitversion* installed which seems to handle *gitversion.yml* differently. This is why I install *gitversion* myself using *chocolatey* in this [script](https://github.com/Barsonax/Singularity/blob/f257aff12cc28d7646dd46391f02f6fa41f4d674/InstallChocolateyPackages.ps1) and then use the full path to the *gitversion.exe* in the build script to call it. This ensures that iam using the correct version.
 
 ## Release notes
 Still whenever I make a new release I should write release notes to let ppl know what has changed. I usually tend to skip this part though since iam a bit lazy...
