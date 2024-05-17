@@ -12,7 +12,9 @@ export const createPages: GatsbyNode['createPages'] = async (
   }) => {
   const articlesQuery = CheckQuery(await graphql<ArticlesQuery>(`
   query articles {
-      allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___date]}, filter: {fileAbsolutePath: {regex: "/(posts)/"}}) {
+      allMarkdownRemark(
+        sort: { frontmatter: { date: DESC } },
+        filter: {fileAbsolutePath: {regex: "/(posts)/"}}) {
           nodes {
             id
             fields {
@@ -52,7 +54,9 @@ export const createPages: GatsbyNode['createPages'] = async (
 
   const pagesQuery = CheckQuery(await graphql<PagesQuery>(`
   query pages {
-    allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___date]}, filter: {fileAbsolutePath: {regex: "/(pages)/"}}) {
+    allMarkdownRemark(
+      sort: { frontmatter: { date: DESC } },
+      filter: {fileAbsolutePath: {regex: "/(pages)/"}}) {
         nodes {
           fields {
             layout

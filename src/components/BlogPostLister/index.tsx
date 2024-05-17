@@ -7,7 +7,7 @@ import { toImageWithMeta } from '../ImageWithMeta'
 
 export const ComponentQuery = graphql`query BlogLister {
   allMarkdownRemark(
-    sort: {order: DESC, fields: [frontmatter___date]}
+    sort: { frontmatter: { date: DESC } }
     filter: {fileAbsolutePath: {regex: "/(posts)/"}, frontmatter: {draft: {ne: true}}}
   ) {
     nodes {
