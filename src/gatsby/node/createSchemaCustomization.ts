@@ -90,7 +90,6 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
           return null;
         }
 
-
         console.log(`Resolved featureImage path ${partialPath} to ${fileNode.absolutePath} for context ${context.path}`)
         return fileNode
       }
