@@ -15,7 +15,7 @@ PackageReference is the new way of referencing nuget packages in .NET projects. 
 
 This change in behavior can cause problems. For instance in the open source game engine [Duality](https://www.duality2d.net/) the object inspector will show you the xml documentation of a class:
 
-![Duality Help Advisor](./dualityhelpadvisor.jpg)
+![Duality Help Advisor](dualityhelpadvisor.jpg)
 
 In order to do this it needs the xml documentation file to be present next to the dll file. Another example where you need the xml documentation file is [Swagger](https://swagger.io/).
 

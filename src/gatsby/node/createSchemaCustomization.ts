@@ -74,31 +74,29 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
     extend: () => ({
       // @ts-ignore
       resolve: async function (featureImage, args, context, info) {
+
         let partialPath = featureImage.src
         if (!partialPath) {
           console.error("Unable to resolve path")
           return null
         }
 
-        const regex = "/(/static/images/" + partialPath + ")/"
-        const fileNode = await context.nodeModel.findAll({
-          firstOnly: true,
+        const fileNode = await context.nodeModel.findOne({
           type: 'File',
           query: {
             filter: {
-              absolutePath: {
-                regex: regex
+              relativePath: {
+                eq: partialPath
               }
             }
           }
         });
-
-        if (!fileNode) {
-          console.error(`Unable to resolve path ${partialPath} for context ${context.path}`)
+        if (!fileNode.absolutePath) {
+          console.error(`Unable to resolve featureImage path ${partialPath} for context ${context.path}`)
           return null;
         }
 
-        console.log(`Resolved path ${partialPath} to ${fileNode.absolutePath} for context ${context.path}`)
+        console.log(`Resolved featureImage path ${partialPath} to ${fileNode.absolutePath} for context ${context.path}`)
         return fileNode
       }
     })
