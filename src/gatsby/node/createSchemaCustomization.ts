@@ -48,21 +48,15 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
       url: String!
     }
 
-    type SitePage{
+    type SitePage implements Node {
       context: SitePageContext!
     }
 
     type SitePageContext{
       slug: String
+      category: [String!]
       previous: MarkdownRemark
       next: MarkdownRemark
-    }
-
-    type SitePage implements Node {
-      context: SitePageContext
-    }
-    type SitePageContext {
-      category: String
     }
   `
 
