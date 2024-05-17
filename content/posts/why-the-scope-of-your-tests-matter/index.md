@@ -33,7 +33,7 @@ Testing implementation details usually happens when writing too fine-grained tes
 3. Calculating a path from A to B using a pathfinding algorithm like A* for instance.
 
 Now if your system is simple just writing tests that target the edge of the system might be enough. At some point though your system might start to become more complex and certain smaller units of behavior in your code might appear that could benefit from their own set of tests. The code that falls into this category still has a clear behavioral promise but is more generic and not related to a single use case of your system. Developers themselves tend to be the ones that are consuming this code as they are the building blocks of your complex system. Some examples:
-1. Custom collections, for instance I implemented my own custom read optimized dictionary when I made Singularity just so I could top the benchmark.
+1. Custom collections
 2. A custom cross-cutting concern in your REST API
 3. General utility methods
 4. Complex domain logic
