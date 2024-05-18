@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "type-check": "tsc --noEmit",
     "build": "gatsby build",
     "dev": "gatsby develop",
     "production": "gatsby serve",

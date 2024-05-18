@@ -1,6 +1,5 @@
 import React from 'react'
 import { connectHighlight } from 'react-instantsearch-dom'
-import styles from './index.module.css'
 
 export const CustomHighlight = connectHighlight(({ highlight, attribute, hit }) => {
   const parsedHit = highlight({

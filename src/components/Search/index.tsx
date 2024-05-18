@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react'
 import {
   InstantSearch,
-  Pagination,
   PoweredBy
 } from 'react-instantsearch-dom'
 

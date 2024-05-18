@@ -9,7 +9,7 @@ const algoliaClient = algoliasearch(
 export const createClient = (minAmountofCharacters: number) => {
   const searchClient = {
     search(requests: MultipleQueriesQuery[]) {
-      if (requests.every(q => q.params?.query?.length < minAmountofCharacters)) {
+      if (requests.every(q => q.params?.query?.length || 0 < minAmountofCharacters)) {
         return Promise.resolve({
           results: requests.map(() => ({
             hits: [],

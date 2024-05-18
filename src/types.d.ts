@@ -2922,7 +2922,7 @@ export type PagesQuery = { readonly __typename?: 'Query', readonly allMarkdownRe
 export type IndexLayoutQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type IndexLayoutQuery = { readonly __typename?: 'Query', readonly site?: { readonly __typename?: 'Site', readonly siteMetadata: { readonly __typename?: 'SiteMetadata', readonly title: string, readonly description: string, readonly keywords: string, readonly siteUrl: string } } | null, readonly file?: { readonly __typename?: 'File', readonly childImageSharp?: { readonly __typename?: 'ImageSharp', readonly gatsbyImageData: any } | null } | null };
+export type IndexLayoutQuery = { readonly __typename?: 'Query', readonly site?: { readonly __typename?: 'Site', readonly siteMetadata: { readonly __typename?: 'SiteMetadata', readonly title: string, readonly description: string, readonly keywords: string, readonly siteUrl: string } } | null, readonly file?: { readonly __typename?: 'File', readonly childImageSharp?: { readonly __typename?: 'ImageSharp', readonly original?: { readonly __typename?: 'ImageSharpOriginal', readonly src?: string | null } | null } | null } | null };
 
 export type PostListerTemplateQueryVariables = Exact<{
   slug: Scalars['String']['input'];

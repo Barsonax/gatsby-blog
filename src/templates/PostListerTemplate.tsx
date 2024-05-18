@@ -18,7 +18,7 @@ const searchIndices = [
 
 const PostListerTemplate = ({ data: { sitePage } }: PostListerTemplateQueryInterface) => (
   <IndexLayout>
-    <ListHeader title="" />
+    <ListHeader />
     <CardContainer>
       <Search
         indices={searchIndices}
