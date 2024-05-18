@@ -6,6 +6,7 @@ import PostDate from '../PostDate'
 import { GatsbyImage } from "gatsby-plugin-image";
 import ImageWithMeta from '../ImageWithMeta'
 import classNames from 'classnames'
+import PostTags from '../PostTags';
 
 interface DisqusConfig {
   url: string
@@ -16,6 +17,7 @@ interface DisqusConfig {
 interface ArticleProps {
   title: string
   date: string
+  tags: readonly string[]
   featuredImage?: ImageWithMeta
   excerpt: string
   disqusConfig: DisqusConfig
@@ -28,7 +30,10 @@ const Article = (props: ArticleProps) =>
         <h1 className={styles.postTitle}>
           {props.title}
         </h1>
-        {props.date && <PostDate date={props.date} className={styles.postDate}></PostDate>}
+        <div className={classNames(styles.postMetadata, styles.mutedText)}>
+          <PostDate date={props.date} />
+          <PostTags tags={props.tags} />
+        </div>
       </header>
       {props.featuredImage && <GatsbyImage image={props.featuredImage.data} alt={props.featuredImage.description} />}
       <div dangerouslySetInnerHTML={{ __html: props.excerpt }} />

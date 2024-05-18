@@ -7,6 +7,7 @@ import PostDate from '../PostDate'
 import classNames from 'classnames'
 import ImageWithMeta from '../ImageWithMeta'
 import { ReactNode } from 'react'
+import PostTags from '../PostTags';
 
 interface BlogCardProps {
   title: string | ReactNode
@@ -28,10 +29,8 @@ const BlogCard = (props: BlogCardProps) =>
       <h2 className={styles.cardTitle}>{props.title}</h2>
       <p className={styles.cardText}>{props.description ?? props.excerpt}</p>
       <div className={classNames(styles.cardSubtext, styles.mutedText)}>
-        <PostDate date={props.date}></PostDate>
-        <p>
-          {props.tags.join(', ')}
-        </p>
+        <PostDate date={props.date} />
+        <PostTags tags={props.tags} />
       </div>
     </article>
   </Link>

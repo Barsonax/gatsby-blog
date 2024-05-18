@@ -35,6 +35,7 @@ const PostTemplate = ({ data: { site, sitePage, markdownRemark } }: PageTemplate
 
       <Article title={markdownRemark.frontmatter.title!}
         date={markdownRemark.frontmatter.date}
+        tags={markdownRemark.frontmatter.tags!}
         excerpt={markdownRemark.html!}
         disqusConfig={disqusConfig}
         featuredImage={toImageWithMeta(markdownRemark.frontmatter.featuredImage)}>

@@ -1,13 +1,13 @@
 import * as React from 'react'
 
 interface PostDataProps {
-  date: any
+  date?: any
   className?: string
 }
 
-const PostDate = ({ date, className }: PostDataProps) => (
-  <p className={className}>Posted
-    <time> {date}</time>
+const PostDate = (props: PostDataProps) => (
+  <p className={props.className}>Posted
+    <time> {props.date}</time>
   </p>
 )
 
