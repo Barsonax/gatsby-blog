@@ -1,6 +1,6 @@
 import React from 'react'
-import { connectSearchBox } from 'react-instantsearch-dom'
 import * as styles from './index.module.css'
+import { connectSearchBox } from 'react-instantsearch-dom'
 
 interface InputProps {
   delay: number;

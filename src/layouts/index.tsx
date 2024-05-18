@@ -1,8 +1,8 @@
 import * as React from 'react'
+import * as styles from './index.module.css'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from "gatsby"
 import { IndexLayoutQuery } from '../types'
-import * as styles from './index.module.css'
 import './global.css';
 import 'normalize.css'
 

@@ -1,0 +1,21 @@
+.post-metadata {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.post-metadata>p {
+  margin: 0;
+}
+
+.post-metadata>p+p {
+  margin-left: 1em;
+  padding-left: 1em;
+  word-spacing: 0.5em;
+  border-left: thin solid #7a7b7c;
+}
+
+.muted-text {
+  font-size: 0.8em;
+  color: #7a7b7c;
+}

@@ -2,11 +2,10 @@ import * as React from 'react'
 import * as styles from './index.module.css'
 
 import './prismhighlight.css'
-import PostDate from '../PostDate'
+import PostMetadata from '../PostMetadata';
 import { GatsbyImage } from "gatsby-plugin-image";
 import ImageWithMeta from '../ImageWithMeta'
 import classNames from 'classnames'
-import PostTags from '../PostTags';
 
 interface DisqusConfig {
   url: string
@@ -30,10 +29,7 @@ const Article = (props: ArticleProps) =>
         <h1 className={styles.postTitle}>
           {props.title}
         </h1>
-        <div className={classNames(styles.postMetadata, styles.mutedText)}>
-          <PostDate date={props.date} />
-          <PostTags tags={props.tags} />
-        </div>
+        <PostMetadata date={props.date} tags={props.tags} />
       </header>
       {props.featuredImage && <GatsbyImage image={props.featuredImage.data} alt={props.featuredImage.description} />}
       <div dangerouslySetInnerHTML={{ __html: props.excerpt }} />
