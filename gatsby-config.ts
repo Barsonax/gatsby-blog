@@ -1,7 +1,8 @@
-import { queries } from "../algolia/algolia"
-import environment from "../environment"
+import { queries } from "./src/algolia/algolia"
+import environment from "./src/environment"
+import type { GatsbyConfig } from "gatsby"
 
-export const Config = {
+const config: GatsbyConfig = {
   siteMetadata: {
     title: 'The Photogrammer',
     description: 'A blog about coding and photography',
@@ -61,14 +62,14 @@ export const Config = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: `${__dirname}/../../static/images`
+        path: `${__dirname}/static/images`
       }
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'content',
-        path: `${__dirname}/../../content`
+        path: `${__dirname}/content`
       }
     },
     {
@@ -200,3 +201,5 @@ export const Config = {
     }] : []),
   ]
 }
+
+export default config

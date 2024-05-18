@@ -14,7 +14,7 @@ type Props = {
   children?: React.ReactNode
 }
 
-const IndexLayout: React.FC<Props> = ({ children }) => {
+const IndexLayout = ({ children }: Props) => {
 
   const data: IndexLayoutQuery = useStaticQuery(graphql`
   query IndexLayout {
