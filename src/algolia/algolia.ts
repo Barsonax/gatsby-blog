@@ -1,11 +1,16 @@
 
 const pageQuery = `{
-  allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/(posts)/"}, frontmatter: {draft: {ne: true}}}) {
+  allMarkdownRemark(
+    filter: {fileAbsolutePath: {regex: "/(posts)/"},
+    frontmatter: {draft: {ne: true}}}) {
     nodes {
       fields {
         slug
       }
       objectID: id
+      internal{
+        contentDigest
+      }
       frontmatter {
         title
         date(formatString: "YYYY-MM-DD")
