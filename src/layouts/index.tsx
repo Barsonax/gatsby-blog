@@ -10,7 +10,11 @@ import 'normalize.css'
 import Menu from '../components/Menu'
 import Footer from '../components/Footer'
 
-const IndexLayout: React.FC = ({ children }) => {
+type Props = {
+  children?: React.ReactNode
+}
+
+const IndexLayout: React.FC<Props> = ({ children }) => {
 
   const data: IndexLayoutQuery = useStaticQuery(graphql`
   query IndexLayout {

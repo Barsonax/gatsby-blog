@@ -5,7 +5,7 @@ interface PostDataProps {
   className?: string
 }
 
-const PostDate: React.SFC<PostDataProps> = ({ date, className }) => (
+const PostDate = ({ date, className }: PostDataProps) => (
   <p className={className}>Posted
     <time> {date}</time>
   </p>

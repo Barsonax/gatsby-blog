@@ -21,7 +21,7 @@ interface ArticleProps {
   disqusConfig: DisqusConfig
 }
 
-const Article: React.FC<ArticleProps> = (props) =>
+const Article = (props: ArticleProps) =>
   <div className={classNames(styles.content, styles.sideTextPadding)}>
     <article className={classNames(styles.post)}>
       <header className={styles.postHeader}>

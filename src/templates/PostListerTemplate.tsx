@@ -16,7 +16,7 @@ const searchIndices = [
 ]
 
 
-const PostListerTemplate: React.SFC<PostListerTemplateQueryInterface> = ({ data: { sitePage } }) => (
+const PostListerTemplate = ({ data: { sitePage } }: PostListerTemplateQueryInterface) => (
   <IndexLayout>
     <ListHeader title="" />
     <CardContainer>

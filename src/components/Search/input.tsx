@@ -6,7 +6,7 @@ interface InputProps {
   delay: number;
 }
 
-export const Input: React.FC<InputProps> = ({ delay }) => {
+export const Input = ({ delay }: InputProps) => {
   let timerId: NodeJS.Timeout | null = null
 
   const InputConnector = connectSearchBox(({ refine }) => (

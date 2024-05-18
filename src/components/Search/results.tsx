@@ -6,10 +6,11 @@ import {
 interface ResultsProps {
   renderEmptyQuery: ReactElement;
   minAmountofCharacters: number;
+  children?: React.ReactNode
 }
 
-export const Results: React.FC<ResultsProps> = ({ children, renderEmptyQuery, minAmountofCharacters }) => {
-  const ResultConnector = connectStateResults(({ searchState, children }) => (searchState?.query && searchState.query.length >= minAmountofCharacters ? <>{children}</> : renderEmptyQuery))
+export const Results = ({ children, renderEmptyQuery, minAmountofCharacters }: ResultsProps) => {
+  const ResultConnector = connectStateResults(({ searchState }) => (searchState?.query && searchState.query.length >= minAmountofCharacters ? <>{children}</> : renderEmptyQuery))
 
   return (
     <ResultConnector>

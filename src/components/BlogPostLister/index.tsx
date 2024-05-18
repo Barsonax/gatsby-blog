@@ -9,7 +9,7 @@ interface BlogListerProps {
   category: string[];
 }
 
-const BlogLister: React.FC<BlogListerProps> = (props) => {
+const BlogLister = (props: BlogListerProps) => {
   const data: BlogListerQuery = useStaticQuery(graphql`
   query BlogLister {
     allMarkdownRemark(

@@ -5,7 +5,7 @@ interface HeaderProps {
   title: string
 }
 
-const ListHeader: React.FC<HeaderProps> = ({ title }) => (
+const ListHeader = ({ title }: HeaderProps) => (
   <header className={styles.listHeader}>
     <p className={styles.listHeaderSubtext}>Coding and photography</p>
     <h1 className={styles.listHeaderTitle}>Photogrammer</h1>

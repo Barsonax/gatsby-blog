@@ -18,7 +18,7 @@ interface BlogCardProps {
   featuredImage?: ImageWithMeta
 }
 
-const BlogCard: React.FC<BlogCardProps> = (props) =>
+const BlogCard = (props: BlogCardProps) =>
   <Link className={classNames(styles.card, styles.blogCard)} to={props.slug}>
     {props.featuredImage && <GatsbyImage
       image={props.featuredImage.data}

@@ -4,9 +4,11 @@ import { sidePadding } from '../shared.module.css'
 
 import classNames from 'classnames'
 
+type Props = {
+  children?: React.ReactNode
+}
 
-
-const BottomNav: React.FC = ({ children }) =>
+const BottomNav = ({ children }: Props) =>
   <nav className={classNames(styles.endNav, sidePadding)}>
     {children}
   </nav>

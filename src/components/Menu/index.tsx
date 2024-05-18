@@ -7,7 +7,7 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import { MenuQuery } from '../../types'
 import classNames from 'classnames'
 
-const Menu: React.FC = () => {
+const Menu = () => {
 
   const data: MenuQuery = useStaticQuery(graphql`
   query Menu {

@@ -11,13 +11,13 @@ interface SocialIconProps {
   label: string
 }
 
-const SocialIcon: React.FC<SocialIconProps> = (data) =>
-  <a aria-label={data.label} href={data.href}>
-    <i className={classNames(styles.svgIcon, data.className)}>
+const SocialIcon = (props: SocialIconProps) =>
+  <a aria-label={props.label} href={props.href}>
+    <i className={classNames(styles.svgIcon, props.className)}>
     </i>
   </a >
 
-const Footer: React.FC = () => {
+const Footer = () => {
   const data: FooterQuery = useStaticQuery(graphql`
   query Footer {
     site {

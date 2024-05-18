@@ -14,7 +14,7 @@ interface PageTemplateQueryInterface {
   data: PostTemplateQuery
 }
 
-const PostTemplate: React.SFC<PageTemplateQueryInterface> = ({ data: { site, sitePage, markdownRemark } }: PageTemplateQueryInterface) => {
+const PostTemplate = ({ data: { site, sitePage, markdownRemark } }: PageTemplateQueryInterface) => {
   if (!sitePage || !site || !markdownRemark) return (<></>);
 
   const disqusConfig = {

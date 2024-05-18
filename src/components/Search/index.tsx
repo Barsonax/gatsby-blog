@@ -22,7 +22,7 @@ interface Index {
   hitComp: string;
 }
 
-const Search: React.FC<SearchProps> = ({ indices, renderEmptyQuery, minAmountofCharacters }) => {
+const Search = ({ indices, renderEmptyQuery, minAmountofCharacters }: SearchProps) => {
   const searchClient = createClient(minAmountofCharacters)
 
   return (
