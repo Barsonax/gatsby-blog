@@ -1,8 +1,7 @@
 ---
 title: Why the scope of your tests matter
 date: 2024-05-10T15:17:00.000Z
-categories:
-  - Programming
+tags: [C#, Tests]
 ---
 
 ## Writing good tests takes skill

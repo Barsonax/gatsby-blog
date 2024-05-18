@@ -1,10 +1,7 @@
 ---
 title: Travel photography workflow
 date: 2019-02-15T18:48:51.000+00:00
-tags:
-- Travel
-categories:
-- Photography
+tags: [Photography, Travel]
 featuredImage:
   src: vietnamlanternstand.jpg
   description: Lantern shop in Hoi An, Vietnam

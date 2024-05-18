@@ -28,6 +28,7 @@ const PostTemplate = ({ data: { site, sitePage, markdownRemark } }: PageTemplate
 
       <Helmet>
         <meta property="og:title" content={markdownRemark.frontmatter.title!} />
+        <meta name="keywords" content={markdownRemark.frontmatter.tags?.join(',')} data-react-helmet="true"></meta>
         <meta property="og:description" content={pageDescription} />
         <meta name="description" content={pageDescription} />
       </Helmet>
@@ -47,7 +48,7 @@ const PostTemplate = ({ data: { site, sitePage, markdownRemark } }: PageTemplate
             description={sitePage.context.previous.frontmatter.description!}
             excerpt={sitePage.context.previous.excerpt}
             date={sitePage.context.previous.frontmatter.date}
-            categories={sitePage.context.previous.frontmatter.categories}
+            tags={sitePage.context.previous.frontmatter.tags!}
             featuredImage={toImageWithMeta(sitePage.context.previous.frontmatter.featuredImage)}>
           </BlogCard>
         </BottomNav>
@@ -70,6 +71,7 @@ export const query = graphql`query PostTemplate($slug: String!) {
     frontmatter {
       title
       description
+      tags
       date(formatString: "D-MM-YYYY")
       featuredImage {
         description
@@ -91,7 +93,7 @@ export const query = graphql`query PostTemplate($slug: String!) {
         frontmatter {
           title
           date(formatString: "D-MM-YYYY")
-          categories
+          tags
           description
           featuredImage {
             description

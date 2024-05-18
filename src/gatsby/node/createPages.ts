@@ -84,8 +84,6 @@ export const createPages: GatsbyNode['createPages'] = async (
   })
 
   createCategoryPage('/', 'PostListerTemplate')
-  createCategoryPage('/categories/photography/', 'PostListerTemplate', ['Photography'])
-  createCategoryPage('/categories/programming/', 'PostListerTemplate', ['Programming'])
 
   function createCategoryPage(slug: string, layout: string, category?: string[]) {
     createPage({

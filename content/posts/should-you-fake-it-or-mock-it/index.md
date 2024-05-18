@@ -1,8 +1,7 @@
 ---
 title: Should you fake it or mock it
 date: 2024-03-22T18:25:00.000Z
-categories:
-  - Programming
+tags: [C#, Tests]
 ---
 
 ## Volatile dependencies

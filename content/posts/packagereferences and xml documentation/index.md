@@ -2,8 +2,7 @@
 title: PackageReferences and xml documentation
 date: 2020-04-20T11:00:00Z
 description: Missing files with PackageReferences
-categories:
-  - Programming
+tags: [.NET, Nuget]
 featuredImage:
   description: lost in the desert
   src: finding-dan-dan-grinwis-O35rT6OytRo-unsplash.jpg

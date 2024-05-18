@@ -18,7 +18,7 @@ export const CustomHits = connectHits(({ hits }) => (
         }
         date={hit.date}
         // @ts-ignore
-        categories={hit.categories}
+        tags={hit.tags}
       />
     ))}
   </>

@@ -1,8 +1,7 @@
 ---
 title: First blog post and Jekyll
 date: 2018-09-21T18:48:51.000Z
-categories:
-  - Programming
+tags: [Jekyll]
 featuredImage:
   src: patrick-tomasso-oaqk7qqnh_c-unsplash.jpg
   description: Lots of open books

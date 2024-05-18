@@ -9,7 +9,6 @@ export const createSchemaCustomization: GatsbyNode["createSchemaCustomization"] 
     }
     type Frontmatter @infer {
       title: String!
-      categories: [String!]!
       tags: [String!]
       featuredImage: FeaturedImage
     }

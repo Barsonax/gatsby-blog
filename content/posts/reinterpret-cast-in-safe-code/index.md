@@ -1,11 +1,7 @@
 ---
 title: C# 7.2 Reinterpret cast in safe code
 date: 2019-08-10T18:48:51.000+00:00
-tags:
-- Csharp
-- Performance
-categories:
-- Programming
+tags: [C#, Performance]
 featuredImage:
   src: reinterpretcode.jpg
   description: Reinterpret cast in C# code

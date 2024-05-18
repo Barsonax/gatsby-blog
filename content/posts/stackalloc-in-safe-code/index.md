@@ -1,11 +1,7 @@
 ---
 title: C# 7.2 Stackalloc in safe code
 date: 2019-01-04T18:48:51.000+00:00
-tags:
-- Csharp
-- Performance
-categories:
-- Programming
+tags: [C#, Performance]
 featuredImage:
   src: spancode.jpg
   description: Stackalloc in safe C# code

@@ -746,7 +746,6 @@ export type FloatQueryOperatorInput = {
 
 export type Frontmatter = {
   readonly __typename?: 'Frontmatter';
-  readonly categories: ReadonlyArray<Scalars['String']['output']>;
   readonly date?: Maybe<Scalars['Date']['output']>;
   readonly description?: Maybe<Scalars['String']['output']>;
   readonly draft?: Maybe<Scalars['Boolean']['output']>;
@@ -765,7 +764,6 @@ export type FrontmatterDateArgs = {
 };
 
 export type FrontmatterFieldSelector = {
-  readonly categories?: InputMaybe<FieldSelectorEnum>;
   readonly date?: InputMaybe<FieldSelectorEnum>;
   readonly description?: InputMaybe<FieldSelectorEnum>;
   readonly draft?: InputMaybe<FieldSelectorEnum>;
@@ -776,7 +774,6 @@ export type FrontmatterFieldSelector = {
 };
 
 export type FrontmatterFilterInput = {
-  readonly categories?: InputMaybe<StringQueryOperatorInput>;
   readonly date?: InputMaybe<DateQueryOperatorInput>;
   readonly description?: InputMaybe<StringQueryOperatorInput>;
   readonly draft?: InputMaybe<BooleanQueryOperatorInput>;
@@ -787,7 +784,6 @@ export type FrontmatterFilterInput = {
 };
 
 export type FrontmatterSortInput = {
-  readonly categories?: InputMaybe<SortOrderEnum>;
   readonly date?: InputMaybe<SortOrderEnum>;
   readonly description?: InputMaybe<SortOrderEnum>;
   readonly draft?: InputMaybe<SortOrderEnum>;
@@ -2897,7 +2893,7 @@ export type PagesQueryQuery = { readonly __typename?: 'Query', readonly allSiteF
 export type BlogListerQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type BlogListerQuery = { readonly __typename?: 'Query', readonly allMarkdownRemark: { readonly __typename?: 'MarkdownRemarkConnection', readonly nodes: ReadonlyArray<{ readonly __typename?: 'MarkdownRemark', readonly excerpt?: string | null, readonly fields: { readonly __typename?: 'MarkdownRemarkFields', readonly slug: string }, readonly frontmatter: { readonly __typename?: 'Frontmatter', readonly title: string, readonly draft?: boolean | null, readonly date?: any | null, readonly categories: ReadonlyArray<string>, readonly description?: string | null, readonly featuredImage?: { readonly __typename?: 'FeaturedImage', readonly description?: string | null, readonly src?: { readonly __typename?: 'File', readonly childImageSharp?: { readonly __typename?: 'ImageSharp', readonly gatsbyImageData: any } | null } | null } | null } }> } };
+export type BlogListerQuery = { readonly __typename?: 'Query', readonly allMarkdownRemark: { readonly __typename?: 'MarkdownRemarkConnection', readonly nodes: ReadonlyArray<{ readonly __typename?: 'MarkdownRemark', readonly excerpt?: string | null, readonly fields: { readonly __typename?: 'MarkdownRemarkFields', readonly slug: string }, readonly frontmatter: { readonly __typename?: 'Frontmatter', readonly title: string, readonly draft?: boolean | null, readonly date?: any | null, readonly tags?: ReadonlyArray<string> | null, readonly description?: string | null, readonly featuredImage?: { readonly __typename?: 'FeaturedImage', readonly description?: string | null, readonly src?: { readonly __typename?: 'File', readonly childImageSharp?: { readonly __typename?: 'ImageSharp', readonly gatsbyImageData: any } | null } | null } | null } }> } };
 
 export type FooterQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2936,4 +2932,4 @@ export type PostTemplateQueryVariables = Exact<{
 }>;
 
 
-export type PostTemplateQuery = { readonly __typename?: 'Query', readonly site?: { readonly __typename?: 'Site', readonly siteMetadata: { readonly __typename?: 'SiteMetadata', readonly siteUrl: string } } | null, readonly markdownRemark?: { readonly __typename?: 'MarkdownRemark', readonly html?: string | null, readonly excerpt?: string | null, readonly frontmatter: { readonly __typename?: 'Frontmatter', readonly title: string, readonly description?: string | null, readonly date?: any | null, readonly featuredImage?: { readonly __typename?: 'FeaturedImage', readonly description?: string | null, readonly src?: { readonly __typename?: 'File', readonly childImageSharp?: { readonly __typename?: 'ImageSharp', readonly gatsbyImageData: any } | null } | null } | null } } | null, readonly sitePage?: { readonly __typename?: 'SitePage', readonly path: string, readonly context: { readonly __typename?: 'SitePageContext', readonly previous?: { readonly __typename?: 'MarkdownRemark', readonly excerpt?: string | null, readonly fields: { readonly __typename?: 'MarkdownRemarkFields', readonly slug: string }, readonly frontmatter: { readonly __typename?: 'Frontmatter', readonly title: string, readonly date?: any | null, readonly categories: ReadonlyArray<string>, readonly description?: string | null, readonly featuredImage?: { readonly __typename?: 'FeaturedImage', readonly description?: string | null, readonly src?: { readonly __typename?: 'File', readonly childImageSharp?: { readonly __typename?: 'ImageSharp', readonly gatsbyImageData: any } | null } | null } | null } } | null } } | null };
+export type PostTemplateQuery = { readonly __typename?: 'Query', readonly site?: { readonly __typename?: 'Site', readonly siteMetadata: { readonly __typename?: 'SiteMetadata', readonly siteUrl: string } } | null, readonly markdownRemark?: { readonly __typename?: 'MarkdownRemark', readonly html?: string | null, readonly excerpt?: string | null, readonly frontmatter: { readonly __typename?: 'Frontmatter', readonly title: string, readonly description?: string | null, readonly tags?: ReadonlyArray<string> | null, readonly date?: any | null, readonly featuredImage?: { readonly __typename?: 'FeaturedImage', readonly description?: string | null, readonly src?: { readonly __typename?: 'File', readonly childImageSharp?: { readonly __typename?: 'ImageSharp', readonly gatsbyImageData: any } | null } | null } | null } } | null, readonly sitePage?: { readonly __typename?: 'SitePage', readonly path: string, readonly context: { readonly __typename?: 'SitePageContext', readonly previous?: { readonly __typename?: 'MarkdownRemark', readonly excerpt?: string | null, readonly fields: { readonly __typename?: 'MarkdownRemarkFields', readonly slug: string }, readonly frontmatter: { readonly __typename?: 'Frontmatter', readonly title: string, readonly date?: any | null, readonly tags?: ReadonlyArray<string> | null, readonly description?: string | null, readonly featuredImage?: { readonly __typename?: 'FeaturedImage', readonly description?: string | null, readonly src?: { readonly __typename?: 'File', readonly childImageSharp?: { readonly __typename?: 'ImageSharp', readonly gatsbyImageData: any } | null } | null } | null } } | null } } | null };

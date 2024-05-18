@@ -2,10 +2,7 @@
 title: The Lowepro Flipside Trek BP 350 AW review
 date: 2020-01-26T18:48:51.000+00:00
 draft: true
-tags:
-- Travel
-categories:
-- Photography
+tags: [Photography, Travel]
 description: A excellent backpack for a good price
 ---
 

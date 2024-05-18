@@ -14,7 +14,7 @@ interface BlogCardProps {
   description?: string
   excerpt: string | ReactNode
   date: string
-  categories: readonly string[]
+  tags: readonly string[]
   featuredImage?: ImageWithMeta
 }
 
@@ -30,7 +30,7 @@ const BlogCard = (props: BlogCardProps) =>
       <div className={classNames(styles.cardSubtext, styles.mutedText)}>
         <PostDate date={props.date}></PostDate>
         <p>
-          {props.categories?.map(x => `#${x}`)}
+          {props.tags.join(', ')}
         </p>
       </div>
     </article>

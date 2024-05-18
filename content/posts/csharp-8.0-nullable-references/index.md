@@ -1,12 +1,7 @@
 ---
 title: C# 8.0 Nullable References
 date: 2019-02-18T18:48:51+00:00
-tags:
-- Csharp
-- Csharp8.0
-- NullReference
-categories:
-- Programming
+tags: [C#, NullReference]
 featuredImage:
   src: nullreferenceexception.jpg
   description: A null reference exception in C#

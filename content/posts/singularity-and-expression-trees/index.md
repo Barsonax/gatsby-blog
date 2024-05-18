@@ -1,8 +1,7 @@
 ---
 title: Singularity and expression trees
 date: 2018-11-20T20:48:51+02:00
-tags: [Csharp]
-categories: [Programming]
+tags: [C#, DI]
 draft: false
 featuredImage:
   src: tree.jpg

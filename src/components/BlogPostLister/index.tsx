@@ -25,7 +25,7 @@ const BlogLister = (props: BlogListerProps) => {
           title
           draft
           date(formatString: "YYYY-MM-DD")
-          categories
+          tags
           description
           featuredImage {
             description
@@ -43,7 +43,7 @@ const BlogLister = (props: BlogListerProps) => {
 
   return <>
     {data.allMarkdownRemark.nodes.map((post) => {
-      if (post.frontmatter.draft !== true && props.category.every((x) => post.frontmatter.categories.includes(x))) {
+      if (post.frontmatter.draft !== true) {
         return (
           <BlogCard
             key={post.fields.slug}
@@ -52,7 +52,7 @@ const BlogLister = (props: BlogListerProps) => {
             description={post.frontmatter.description!}
             excerpt={post.excerpt!}
             date={post.frontmatter.date}
-            categories={post.frontmatter.categories}
+            tags={post.frontmatter.tags!}
             featuredImage={toImageWithMeta(post.frontmatter.featuredImage)} />
         )
       }

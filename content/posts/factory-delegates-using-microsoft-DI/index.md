@@ -1,8 +1,7 @@
 ---
 title: Simplified DI with Funcs
 date: 2023-04-17T00:00:00.000Z
-categories:
-  - Programming
+tags: [C#, DI]
 featuredImage:
   src: factory-delegates.jpg
   description: A factory

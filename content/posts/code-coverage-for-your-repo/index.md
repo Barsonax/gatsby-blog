@@ -1,8 +1,7 @@
 ---
 title: Code coverage for your repo
 date: 2018-11-07T18:48:51.000Z
-categories:
-  - Programming
+tags: [Tests]
 featuredImage:
   src: stephen-dawson-qwtcej5clys-unsplash.jpg
   description: Screen showing metrics
