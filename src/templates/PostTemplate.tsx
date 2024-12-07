@@ -59,3 +59,55 @@ const PostTemplate = ({ data: { site, sitePage, markdownRemark } }: PageTemplate
 }
 
 export default PostTemplate
+
+export const query = graphql`query PostTemplate($slug: String!) {
+  site {
+    siteMetadata {
+      siteUrl
+    }
+  }
+  markdownRemark(fields: {slug: {eq: $slug}}) {
+    html
+    excerpt
+    frontmatter {
+      title
+      description
+      tags
+      date(formatString: "D-MM-YYYY")
+      featuredImage {
+        description
+        src {
+          childImageSharp {
+            gatsbyImageData(quality: 50, layout: FULL_WIDTH)
+          }
+        }
+      }
+    }
+  }
+  sitePage(path: {eq: $slug}) {
+    path
+    context {
+      previous {
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          date(formatString: "D-MM-YYYY")
+          tags
+          description
+          featuredImage {
+            description
+            src {
+              childImageSharp {
+                gatsbyImageData(quality: 50, layout: FULL_WIDTH)
+              }
+            }
+          }
+        }
+        excerpt
+      }
+    }
+  }
+}
+`
