@@ -32,12 +32,3 @@ const PostListerTemplate = ({ data: { sitePage } }: PostListerTemplateQueryInter
 )
 
 export default PostListerTemplate
-
-export const query = graphql`
-query PostListerTemplate($slug: String!) {
-  sitePage(path: {eq: $slug}) {
-    context {
-        category
-      }
-    }
-  } `
